@@ -5,9 +5,10 @@ const client = new Client();
 
 let queue = {};
 
-          client.on('message', message => {
-  
-          if (message.content.startsWith(prefix + 'play')) {
+   const commands = {
+	   
+	   'play': (msg) => {
+	
 		if (queue[msg.guild.id] === undefined) return msg.channel.sendMessage(`Add some songs to the queue first with ${tokens.prefix}add`);
 		if (!msg.guild.voiceConnection) return commands.join(msg).then(() => commands.play(msg));
 		if (queue[msg.guild.id].playing) return msg.channel.sendMessage('Already Playing');
