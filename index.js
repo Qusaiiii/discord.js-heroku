@@ -7,6 +7,7 @@ let queue = {};
 
 const commands = {
 	'play': (msg) => {
+		if (message.content.startsWith(prefix + 'play')) {
 		if (queue[msg.guild.id] === undefined) return msg.channel.sendMessage(`Add some songs to the queue first with ${tokens.prefix}add`);
 		if (!msg.guild.voiceConnection) return commands.join(msg).then(() => commands.play(msg));
 		if (queue[msg.guild.id].playing) return msg.channel.sendMessage('Already Playing');
@@ -92,4 +93,4 @@ client.on('ready', () => {
 
 client.login(process.env.BOT_TOKEN);
 client.login('Mzg4NzgwMzgwODI1NzE0Njkw.DQ2Bqw.o_z2NTiitDX1EK4OzNk_WUQk31U')
-var prefix = '**'
+var prefix = '*'
